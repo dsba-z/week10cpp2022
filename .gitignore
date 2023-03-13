@@ -74,3 +74,5 @@ code/build-*
 .ccls-cache
 
 CMakeLists.txt.user
+
+build/

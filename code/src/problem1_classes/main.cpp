@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 #include "polarcoordinate.h"
 
@@ -17,7 +17,7 @@ bool testConstructor()
     double testAng = M_PI;
     PolarCoordinate c(testRad, testAng);
     bool doubleConstr = checkFields(c, testRad, testAng);
-    
+
     return doubleConstr;
 }
 
@@ -40,7 +40,7 @@ bool testAddAs(PolarCoordinate& a, const PolarCoordinate& b)
     a += b;
     bool test1 = checkFields(a, c.getRadius(), c.getAngle());
     c = a + a;
-    bool test2 = checkFields(a+=a, c.getRadius(), c.getAngle());
+    bool test2 = checkFields(a += a, c.getRadius(), c.getAngle());
     return test1 && test2;
 }
 
@@ -51,22 +51,21 @@ bool testSubAs(PolarCoordinate& a, const PolarCoordinate& b)
     a -= b;
     bool test1 = checkFields(a, c.getRadius(), c.getAngle());
     c = a - a;
-    bool test2 = checkFields(a-=a, c.getRadius(), c.getAngle());
+    bool test2 = checkFields(a -= a, c.getRadius(), c.getAngle());
     return test1 && test2;
 }
-
 
 
 bool testPartC()
 {
     PolarCoordinate a(10, 0);
     PolarCoordinate b(10, M_PI_2);
-    if (!testAdditionConst(a, b, 10*std::sqrt(2), M_PI_4))
+    if (!testAdditionConst(a, b, 10 * std::sqrt(2), M_PI_4))
     {
         std::cerr << "Error in addition\n";
         return false;
     }
-    if (!testSubtractionConst(a, b, 10*std::sqrt(2), -M_PI_4))
+    if (!testSubtractionConst(a, b, 10 * std::sqrt(2), -M_PI_4))
     {
         std::cerr << "Error in subtraction\n";
         return false;
@@ -112,11 +111,9 @@ bool testDivAs(PolarCoordinate& a, const double& value)
 }
 
 
-
-
 bool testPartD()
 {
-    PolarCoordinate a(10, M_PI/3);
+    PolarCoordinate a(10, M_PI / 3);
     double value = 3.0;
     if (!testMult(a, value))
     {
@@ -138,14 +135,14 @@ bool testPartD()
         std::cerr << "Error in division with assignment\n";
         return false;
     }
-    return true
+    return true;
 }
 
 
 bool testEverything()
 {
     bool constructors = testConstructor();
-    
+
     bool partC = testPartC();
     bool partD = testPartD();
     return constructors && partC && partD;
