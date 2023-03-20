@@ -1,5 +1,6 @@
 #include "polarcoordinate.h"
 
-PolarCoordinate::PolarCoordinate()
+PolarCoordinate::PolarCoordinate(double radius, double angle)
+: _radius(radius), _angle(angle)
 {
 }

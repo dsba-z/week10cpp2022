@@ -1,7 +1,7 @@
 #ifndef POLARCOORDINATE_H
 #define POLARCOORDINATE_H
-
-
+#include <utility>
+#include <cmath>
 class PolarCoordinate
 {
 
@@ -10,6 +10,16 @@ public:
 
     double getRadius() const { return _radius; }
     double getAngle() const { return _angle; }
+
+
+    std::pair<double, double> toCartesian()
+    {
+        double x = _radius * std::cos(_angle);
+        double y = _radius * std::sin(_angle);
+        std::pair<double, double> result(x, y);
+        return result;
+    }
+
 
     PolarCoordinate operator+(const PolarCoordinate& b) const;
     PolarCoordinate operator-(const PolarCoordinate& b) const;
@@ -25,5 +35,15 @@ private:
     double _radius;
     double _angle;
 };
+
+
+PolarCoordinate cartesianToPolar(double x, double y)
+{
+    double radius = std::hypot(x, y);
+    double angle = std::atan2(y, x);
+    PolarCoordinate result(radius, angle);
+    return result;
+}
+
 
 #endif// POLARCOORDINATE_H
