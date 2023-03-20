@@ -21,6 +21,15 @@ public:
     }
 
 
+    static PolarCoordinate cartesianToPolar(double x, double y)
+    {
+        double radius = std::hypot(x, y);
+        double angle = std::atan2(y, x);
+        PolarCoordinate result(radius, angle);
+        return result;
+    }
+
+
     PolarCoordinate operator+(const PolarCoordinate& b) const;
     PolarCoordinate operator-(const PolarCoordinate& b) const;
     PolarCoordinate& operator+=(const PolarCoordinate& b);
@@ -37,13 +46,6 @@ private:
 };
 
 
-PolarCoordinate cartesianToPolar(double x, double y)
-{
-    double radius = std::hypot(x, y);
-    double angle = std::atan2(y, x);
-    PolarCoordinate result(radius, angle);
-    return result;
-}
 
 
 #endif// POLARCOORDINATE_H
