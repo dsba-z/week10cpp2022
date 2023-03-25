@@ -98,14 +98,14 @@ bool testDiv(const PolarCoordinate& a, const double& value)
 
 bool testMultAs(PolarCoordinate& a, const double& value)
 {
-    PolarCoordinate c = a * value;
+    PolarCoordinate c = a;
     a *= value;
     return checkFields(a, c.getRadius() * value, c.getAngle());
 }
 
 bool testDivAs(PolarCoordinate& a, const double& value)
 {
-    PolarCoordinate c = a / value;
+    PolarCoordinate c = a;
     a /= value;
     return checkFields(a, c.getRadius() / value, c.getAngle());
 }
@@ -159,5 +159,16 @@ int main()
     {
         std::cout << "Some tests have failed. Execution of the following tests stopped.\n";
     }
+    PolarCoordinate myCoord(1, 2);
+
+    std::pair<double, double> xy = myCoord.toCartesian();
+
+    double x = 2;
+    double y = 2.4;
+
+    // std::to_string()
+
+    PolarCoordinate newCoord = PolarCoordinate::cartesianToPolar(2, 2.4);
+
     return 0;
 }
