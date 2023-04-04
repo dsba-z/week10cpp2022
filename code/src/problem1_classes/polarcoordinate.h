@@ -1,6 +1,7 @@
 #ifndef POLARCOORDINATE_H
 #define POLARCOORDINATE_H
 
+#include <utility>
 
 class PolarCoordinate
 {
@@ -11,6 +12,9 @@ public:
     double getRadius() const { return _radius; }
     double getAngle() const { return _angle; }
 
+    static PolarCoordinate convertToPolar(double x, double y);
+    static std::pair<double, double> convertToReal(const PolarCoordinate& polar);
+    
     PolarCoordinate operator+(const PolarCoordinate& b) const;
     PolarCoordinate operator-(const PolarCoordinate& b) const;
     PolarCoordinate& operator+=(const PolarCoordinate& b);
@@ -20,6 +24,9 @@ public:
     PolarCoordinate operator/(double b) const;
     PolarCoordinate& operator*=(double b);
     PolarCoordinate& operator/=(double b);
+
+public:
+    static int counter;
 
 private:
     double _radius;

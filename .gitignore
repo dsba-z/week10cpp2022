@@ -76,3 +76,4 @@ code/build-*
 CMakeLists.txt.user
 
 build/
+.vscode/settings.json

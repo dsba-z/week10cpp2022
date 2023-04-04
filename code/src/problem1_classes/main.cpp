@@ -148,6 +148,8 @@ bool testEverything()
     return constructors && partC && partD;
 }
 
+int PolarCoordinate::counter = 0;
+
 int main()
 {
     bool success = testEverything();
@@ -159,5 +161,15 @@ int main()
     {
         std::cout << "Some tests have failed. Execution of the following tests stopped.\n";
     }
+
+    PolarCoordinate pc1 = PolarCoordinate::convertToPolar(2, 20);
+    PolarCoordinate pc2(1 ,22);
+    std::pair<double, double> rpair = PolarCoordinate::convertToReal(pc1);
+    
+    pc1 + pc2;
+    pc1 += pc2;
+
+    std::cout << PolarCoordinate::counter << '\n';
+
     return 0;
 }
